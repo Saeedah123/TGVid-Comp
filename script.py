@@ -1,55 +1,55 @@
 class Txt(object):
 
     PRIVATE_START_MSG = """
-Hɪ {},
+Hi {},
 
-I'ᴍ Fɪʟᴇs Eɴᴄᴏᴅᴇʀ ʙᴏᴛ ᴄᴀɴ ᴅᴏ ᴄᴏᴍᴘʀᴇss ʏᴏᴜʀ ғɪʟᴇs ɪɴ ɴᴇɢʟɪɢɪʙʟᴇ ᴡɪᴛʜᴏᴜᴛ ʟᴏss ᴏғ ǫᴜᴀʟɪᴛɪᴇs ᴊᴜsᴛ sᴇɴᴅ ᴍᴇ ᴠɪᴅᴇᴏ
+I'm Video Encoder Bot Can Can Compress Your Video To Negligible Size Without Loosing The Qualities Just Send Me Video
 """
     GROUP_START_MSG = """
-Hɪ {},
+Hi {},
 
-I'ᴍ Fɪʟᴇs Eɴᴄᴏᴅᴇʀ ʙᴏᴛ ᴄᴀɴ ᴄᴏᴍᴘʀᴇss ʏᴏᴜʀ ғɪʟᴇs ᴛᴏ ɴᴇɢʟɪɢɪʙʟᴇ sɪᴢᴇ ᴡɪᴛʜᴏᴜᴛ ʟᴏᴏsɪɴɢ ᴛʜᴇ ǫᴜᴀʟɪᴛɪᴇs ᴊᴜsᴛ sᴇɴᴅ ᴍᴇ ᴠɪᴅᴇᴏ
+I'm Video Encoder Bot Can Can Compress Your Video To Negligible Size Without Loosing The Qualities Just Send Me Video
 
-❗**Yᴏᴜ ʜᴀsɴ'ᴛ sᴛᴀʀᴛᴇᴅ ᴍᴇ ʏᴇᴛ ᴛᴏ ᴜsᴇ ᴍᴇ ғɪʀsᴛ sᴛᴀʀᴛ ᴍᴇ sᴏ ɪ ᴄᴀɴ ᴡᴏʀᴋ ғʟᴀᴡʟᴇssʟʏ**
+❗**You Hasn't Started Me Yet To Use Me First Start Me So I Can Work Flawlessly**
 """
     PROGRESS_BAR = """<b>
-╭━━━━❰ᴘʀᴏɢʀᴇss ʙᴀʀ❱━➣
-┣⪼ 🗃️ Sɪᴢᴇ: {1} | {2}
-┣⪼ ⏳️ Dᴏɴᴇ : {0}%
-┣⪼ 🚀 Sᴩᴇᴇᴅ: {3}/s
-┣⪼ ⏰️ Eᴛᴀ: {4}
+╭━━━━❰Progress Bar❱━➣
+┣⪼ 🗃️ Size: {1} | {2}
+┣⪼ ⏳️ Done: {0}%
+┣⪼ 🚀 Speed: {3}/s
+┣⪼ ⏰️ Eta: {4}
 ╰━━━━━━━━━━━━━━━➣ </b>"""
 
     SEND_FFMPEG_CODE = """
-❪ SET CUSTOM FFMPEG CODE ❫
+❪ Set Custom Ffmpeg Code ❫
 
 Send me the correct ffmpeg code for more info.
 
 
-☛ <a href=https://unix.stackexchange.com/questions/28803/how-can-i-reduce-a-videos-size-with-ffmpeg#:~:text=ffmpeg%20%2Di%20input.mp4%20%2Dvcodec%20libx265%20%2Dcrf%2028%20output.mp4> FOR HELP </a>
+☛ <a href=https://unix.stackexchange.com/questions/28803/how-can-i-reduce-a-videos-size-with-ffmpeg#:~:text=ffmpeg%20%2Di%20input.mp4%20%2Dvcodec%20libx265%20%2Dcrf%2028%20output.mp4> For Help </a>
 
 ⦿ Fᴏʀᴍᴀᴛ Oɴ Hᴏᴡ Tᴏ Sᴇᴛ
 
 ☞ ffmpeg -i input.mp4 <code> -c:v libx264 -crf 23 </code> output.mp4
 
-<code> -c:v libx264 -crf 23 </code> Tʜɪs ɪs ʏᴏᴜʀ ғғᴍᴘᴇɢ ᴄᴏᴅᴇ ✅
+<code> -c:v libx264 -crf 23 </code> This Is Your Ffmpeg Code ✅
 
-📥 Fᴏʀ Hᴇʟᴘ Cᴏɴᴛ. @Snowball_Official
+📥 For Help Join. @KingBjssChat
 """
 
     SEND_METADATA ="""
 ❪ SET CUSTOM METADATA ❫
 
-☞ Fᴏʀ Exᴀᴍᴘʟᴇ:-
+☞ For Example:-
 
 ◦ <code> -map 0 -c:s copy -c:a copy -c:v copy -metadata title="My Video" -metadata author="John Doe" -metadata:s:s title="Subtitle Title" -metadata:s:a title="Audio Title" -metadata:s:v title="Video Title" </code>
 
-📥 Fᴏʀ Hᴇʟᴘ Cᴏɴᴛ. @Snowball_Official
+📥 For Help Join. @KingBjssChat
 """
 
     
     HELP_MSG = """
-Available commands:-
+Available Commands:-
 
 ➜ /set_ffmpeg - To set custom ffmpeg code
 ➜ /set_metadata - To set custom metadata code
@@ -61,17 +61,15 @@ Available commands:-
 ➜ /see_caption - View caption 
 ➜ To Set Thumbnail just send photo
 
-
-<b>⦿ Developer:</b> <a href=https://t.me/Snowball_Official>ѕησωвαℓℓ ❄️</a>
+<b>⦿ Developer:</b> <a href=https://t.me/KingBjss>King Bjss ❄️</a>
 """
 
     ABOUT_TXT = """<b>╭───────────⍟
-├🤖 ᴍy ɴᴀᴍᴇ : @{}
-├👨‍💻 Pʀᴏɢʀᴀᴍᴇʀ : <a href=https://t.me/Snowball_Official>𝓢𝓝𝓞𝓦𝓑𝓐𝓛𝓛</a>
-├👑 Instagram : <a href=https://www.instagram.com/ritesh6_>C-Insta</a> 
-├☃️ ꜰᴏᴜɴᴅᴇʀ ᴏꜰ : <a href=https://t.me/+mCdsJ7mjeBEyZWQ1>K-Lᴀɴᴅ</a>
-├📕 Lɪʙʀᴀʀy : <a href=https://github.com/pyrogram>Pyʀᴏɢʀᴀᴍ</a>
-├✏️ Lᴀɴɢᴜᴀɢᴇ: <a href=https://www.python.org>Pyᴛʜᴏɴ 3</a>
-├💾 Dᴀᴛᴀ Bᴀꜱᴇ: <a href=https://cloud.mongodb.com>Mᴏɴɢᴏ DB</a>
-├🌀 ᴍʏ ꜱᴇʀᴠᴇʀ : <a href=https://dashboard.heroku.com>Heroku</a>
+├🤖 My Name: @{}
+├👨‍💻 Programmer: <a href=https://t.me/KingBjss>King Bjss</a>
+├📕 Library: <a href=https://github.com/pyrogram>Pyrogram</a>
+├✏️ Language: <a href=https://www.python.org>Python3</a>
+├💾 Database: <a href=https://cloud.mongodb.com>Mongo DB</a>
+├🌀 My Server: <a href=https://dashboard.heroku.com>Heroku</a>
 ╰───────────────⍟ """
+    
