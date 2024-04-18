@@ -23,15 +23,15 @@ async def Handle_StartMsg(bot:Client, msg:Message):
         botusername = await bot.get_me()
         btn = [
             [InlineKeyboardButton(text='⚡ BOT PM', url=f'https://t.me/{botusername.username}')],
-            [InlineKeyboardButton(text='💻 Dᴇᴠᴇʟᴏᴘᴇʀ', url='https://t.me/Snowball_Official')]
+            [InlineKeyboardButton(text='💻 Support', url='https://t.me/KingBjssChat')]
         ]
 
         await Snowdev.edit(text=Txt.GROUP_START_MSG.format(msg.from_user.mention), reply_markup=InlineKeyboardMarkup(btn))
     
     else:
         btn = [
-            [InlineKeyboardButton(text='❗ Hᴇʟᴘ', callback_data='help'), InlineKeyboardButton(text='🌨️ Aʙᴏᴜᴛ', callback_data='about')],
-            [InlineKeyboardButton(text='📢 Uᴘᴅᴀᴛᴇs', url='https://t.me/AIORFT'), InlineKeyboardButton(text='💻 Dᴇᴠᴇʟᴏᴘᴇʀ', url='https://t.me/Snowball_Official')]
+            [InlineKeyboardButton(text='❗ Help', callback_data='help'), InlineKeyboardButton(text='🌨️ About', callback_data='about')],
+            [InlineKeyboardButton(text='📢 Updates', url='https://t.me/KingBjss'), InlineKeyboardButton(text='💻 Support', url='https://t.me/KingBjssChat')]
         ]
 
         if Config.START_PIC:
@@ -52,7 +52,7 @@ async def Files_Option(bot:Client, message:Message):
         botusername = await bot.get_me()
         btn = [
             [InlineKeyboardButton(text='⚡ BOT PM', url=f'https://t.me/{botusername.username}')],
-            [InlineKeyboardButton(text='💻 Dᴇᴠᴇʟᴏᴘᴇʀ', url='https://t.me/Snowball_Official')]
+            [InlineKeyboardButton(text='💻 Support', url='https://t.me/KingBjssChat')]
         ]
 
         return await SnowDev.edit(text=Txt.GROUP_START_MSG.format(message.from_user.mention), reply_markup=InlineKeyboardMarkup(btn))
@@ -63,21 +63,21 @@ async def Files_Option(bot:Client, message:Message):
 
 
     try:
-        text = f"""**__What do you want me to do with this file.?__**\n\n**File Name** :- `{filename}`\n\n**File Size** :- `{filesize}`"""
+        text = f"""**__What Do You Want Me To Do With This File.?__**\n\n**File Name** :- `{filename}`\n\n**File Size** :- `{filesize}`"""
 
-        buttons = [[InlineKeyboardButton("Rᴇɴᴀᴍᴇ 📝", callback_data=f"rename-{message.from_user.id}")],
-                   [InlineKeyboardButton("Cᴏᴍᴘʀᴇss 🗜️", callback_data=f"compress-{message.from_user.id}")]]
+        buttons = [[InlineKeyboardButton("Rename 📝", callback_data=f"rename-{message.from_user.id}")],
+                   [InlineKeyboardButton("Compress 🗜️", callback_data=f"compress-{message.from_user.id}")]]
         await SnowDev.edit(text=text, reply_markup=InlineKeyboardMarkup(buttons))
         
     except FloodWait as e:
         
-        floodmsg = await message.reply_text(f"**😥 Pʟᴇᴀsᴇ Wᴀɪᴛ ᴅᴏɴ'ᴛ ᴅᴏ ғʟᴏᴏᴅɪɴɢ ᴡᴀɪᴛ ғᴏʀ {e.value} Sᴇᴄᴄᴏɴᴅs**", reply_to_message_id=message.id)
+        floodmsg = await message.reply_text(f"**😥 Please Wait Don't Do Flooding Wait For {e.value} Seconds**", reply_to_message_id=message.id)
         await sleep(e.value)
         await floodmsg.delete()
 
         text = f"""**__What do you want me to do with this file.?__**\n\n**File Name** :- `{filename}`\n\n**File Size** :- `{filesize}`"""
-        buttons = [[InlineKeyboardButton("Rᴇɴᴀᴍᴇ 📝", callback_data=f"rename-{message.from_user.id}")],
-                   [InlineKeyboardButton("Cᴏᴍᴘʀᴇss 🗜️", callback_data=f"compress-{message.from_user.id}")]]
+        buttons = [[InlineKeyboardButton("Rename 📝", callback_data=f"rename-{message.from_user.id}")],
+                   [InlineKeyboardButton("Compress 🗜️", callback_data=f"compress-{message.from_user.id}")]]
         await SnowDev.edit(text=text, reply_markup=InlineKeyboardMarkup(buttons))
 
     except Exception as e:
@@ -96,3 +96,4 @@ async def cancel_process(bot:Client, message:Message):
         return await message.reply_text(text="**Canceled All On Going Processes ✅**")
     except BaseException:
         pass
+        
