@@ -47,7 +47,7 @@ async def progress_for_pyrogram(current, total, ud_type, message, start):
         try:
             await message.edit(
                 text=f"{ud_type}\n\n{tmp}",               
-                reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton("✖️ 𝙲𝙰𝙽𝙲𝙴𝙻 ✖️", callback_data=f"close-{message.from_user.id}")]])                                               
+                reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton("✖️ Cancel ✖️", callback_data=f"close-{message.from_user.id}")]])                                               
             )
         except:
             pass
@@ -107,7 +107,7 @@ async def send_log(b, u):
         time = curr.strftime('%I:%M:%S %p')
         await b.send_message(
             Config.LOG_CHANNEL,
-            f"**--Nᴇᴡ Uꜱᴇʀ Sᴛᴀʀᴛᴇᴅ Tʜᴇ Bᴏᴛ--**\n\nUꜱᴇʀ: {u.mention}\nIᴅ: `{u.id}`\nUɴ: @{u.username}\n\nDᴀᴛᴇ: {date}\nTɪᴍᴇ: {time}\n\nBy: @{botusername.username}"
+            f"**--New User Started The Bot--**\n\nUser: {u.mention}\nID: `{u.id}`\nUsername: @{u.username}\n\nDate: {date}\nTime: {time}\n\nBy: @{botusername.username}"
         )
         
 
@@ -129,9 +129,9 @@ def Filename(filename, mime_type):
 async def CANT_CONFIG_GROUP_MSG(client, message):
     botusername = await client.get_me()
     btn = [
-        [InlineKeyboardButton(text='Bᴏᴛ Pᴍ', url=f'https://t.me/{botusername.username}')]
+        [InlineKeyboardButton(text='Bot Pm', url=f'https://t.me/{botusername.username}')]
     ]
-    ms = await message.reply_text(text="Sᴏʀʀʏ Yᴏᴜ Cᴀɴ'ᴛ Cᴏɴғɪɢ Yᴏᴜʀ Sᴇᴛᴛɪɴɢs\n\nFɪʀsᴛ sᴛᴀʀᴛ ᴍᴇ ɪɴ ᴘʀɪᴠᴀᴛᴇ ᴛʜᴇɴ ʏᴏᴜ ᴄᴀɴ ᴜsᴇ ᴍʏ ғᴇᴀᴛᴜᴇʀs ɪɴ ɢʀᴏᴜᴘ", reply_to_message_id = message.id, reply_markup=InlineKeyboardMarkup(btn))
+    ms = await message.reply_text(text="Sorry You Can't Config Your Settings\n\nFirst Start Me In Private Then You Can Use My Features In Group", reply_to_message_id = message.id, reply_markup=InlineKeyboardMarkup(btn))
 
     await asyncio.sleep(10)
     await ms.delete()
@@ -141,7 +141,7 @@ async def Compress_Stats(e, userid):
 
 
     if int(userid) not in [e.from_user.id, 0]:
-        return await e.answer(f"⚠️ Hᴇʏ {e.from_user.first_name}\nYᴏᴜ ᴄᴀɴ'ᴛ sᴇᴇ sᴛᴀᴛᴜs ᴀs ᴛʜɪs ɪs ɴᴏᴛ ʏᴏᴜʀ ғɪʟᴇ", show_alert=True)
+        return await e.answer(f"⚠️ Hey {e.from_user.first_name}\nYou Can't See Status As This Is Not Your File", show_alert=True)
     
     inp = f"ffmpeg/{e.from_user.id}/{os.listdir(f'ffmpeg/{e.from_user.id}')[0]}"
     outp = f"encode/{e.from_user.id}/{os.listdir(f'encode/{e.from_user.id}')[0]}"
@@ -160,7 +160,7 @@ async def Compress_Stats(e, userid):
 async def skip(e, userid):
 
     if int(userid) not in [e.from_user.id, 0]:
-        return await e.answer(f"⚠️ Hᴇʏ {e.from_user.first_name}\nYᴏᴜ ᴄᴀɴ'ᴛ ᴄᴀɴᴄᴇʟ ᴛʜᴇ ᴘʀᴏᴄᴇss ᴀs ʏᴏᴜ ᴅɪᴅɴ'ᴛ sᴛᴀʀᴛ ɪᴛ", show_alert=True)
+        return await e.answer(f"⚠️ Hey {e.from_user.first_name}\nYou Can't Cancel The Process As You Didn't Start It", show_alert=True)
     try:
         await e.message.delete()
         os.system(f"rm -rf ffmpeg/{userid}*")
@@ -183,11 +183,11 @@ async def skip(e, userid):
 
 async def CompressVideo(bot, query, ffmpegcode, c_thumb):
     UID = query.from_user.id
-    ms = await query.message.edit('Pʟᴇᴀsᴇ Wᴀɪᴛ...\n\n**Fᴇᴛᴄʜɪɴɢ Qᴜᴇᴜᴇ 👥**')
+    ms = await query.message.edit('Please Wait...\n\n**Fetching Queue 👥**')
     
 
     if os.path.isdir(f'ffmpeg/{UID}') and os.path.isdir(f'encode/{UID}'):
-        return await ms.edit("**⚠️ Yᴏᴜ ᴄᴀɴ ᴄᴏᴍᴘʀᴇss ᴏɴʟʏ ᴏɴᴇ ғɪʟᴇ ᴀᴛ ᴀ ᴛɪᴍᴇ\n\nAs ᴛʜɪs ʜᴇʟᴘs ʀᴇᴅᴜᴄᴇ sᴇʀᴠᴇʀ ʟᴏᴀᴅ.**")
+        return await ms.edit("**⚠️ You Can Compress Only One File At A Time\n\nAs This Help To Reduce Server Load.**")
 
     try:
         media = query.message.reply_to_message
@@ -199,7 +199,7 @@ async def CompressVideo(bot, query, ffmpegcode, c_thumb):
         Output_Path = f"encode/{UID}/{filename}"
         
         
-        await ms.edit('⚠️__**Please wait...**__\n**Tʀyɪɴɢ Tᴏ Dᴏᴡɴʟᴏᴀᴅɪɴɢ....**')
+        await ms.edit('⚠️__**Please Wait...**__\n**Trying To Downloading....**')
         s = dt.now()
         try:
             if not os.path.isdir(Download_DIR) and not os.path.isdir(Output_DIR):
@@ -210,7 +210,7 @@ async def CompressVideo(bot, query, ffmpegcode, c_thumb):
                     message=file,
                     file_name=File_Path,
                     progress=progress_for_pyrogram,
-                    progress_args=("\n⚠️__**Please wait...**__\n\n☃️ **Dᴏᴡɴʟᴏᴀᴅ Sᴛᴀʀᴛᴇᴅ....**", ms, time.time())
+                    progress_args=("\n⚠️__**Please Wait...**__\n\n☃️ **Download Started....**", ms, time.time())
                 )
         except Exception as e:
             return await ms.edit(str(e))
@@ -221,8 +221,8 @@ async def CompressVideo(bot, query, ffmpegcode, c_thumb):
         await ms.edit(
             "**🗜 Compressing...**",
             reply_markup=InlineKeyboardMarkup([
-                [InlineKeyboardButton(text='Sᴛᴀᴛs', callback_data=f'stats-{UID}')],
-                [InlineKeyboardButton(text='Cᴀɴᴄᴇʟ', callback_data=f'skip-{UID}')]
+                [InlineKeyboardButton(text='Stats', callback_data=f'stats-{UID}')],
+                [InlineKeyboardButton(text='Cancel', callback_data=f'skip-{UID}')]
             ])
         )
         
@@ -264,14 +264,14 @@ async def CompressVideo(bot, query, ffmpegcode, c_thumb):
         x = dtime
         xx = ts(int((ees - es).seconds) * 1000)
         xxx = ts(int((eees - ees).seconds) * 1000)
-        await ms.edit("⚠️__**Please wait...**__\n**Tʀyɪɴɢ Tᴏ Uᴩʟᴏᴀᴅɪɴɢ....**")
+        await ms.edit("⚠️__**Please Wait...**__\n**Trying To Uploading....**")
         await bot.send_document(
                 UID,
                 document=Output_Path,
                 thumb=ph_path,
                 caption=Config.caption.format(filename, humanbytes(org), humanbytes(com) , per, x, xx, xxx),
                 progress=progress_for_pyrogram,
-                progress_args=("⚠️__**Please wait...**__\n🌨️ **Uᴩʟᴏᴅ Sᴛᴀʀᴛᴇᴅ....**", ms, time.time()))
+                progress_args=("⚠️__**Please Wait...**__\n🌨️ **Upload Started....**", ms, time.time()))
         
         if query.message.chat.type == enums.ChatType.SUPERGROUP:
             botusername = await bot.get_me()
@@ -291,3 +291,4 @@ async def CompressVideo(bot, query, ffmpegcode, c_thumb):
         
     except Exception as e:
         print('Error on line {}'.format(sys.exc_info()[-1].tb_lineno), type(e).__name__, e)
+        
