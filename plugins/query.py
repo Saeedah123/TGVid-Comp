@@ -17,23 +17,23 @@ async def Cb_Handle(bot: Client, query: CallbackQuery):
     if data == 'help':
 
         btn = [
-            [InlineKeyboardButton('⟸ Bᴀᴄᴋ', callback_data='home')]
+            [InlineKeyboardButton('⟸ Back', callback_data='home')]
         ]
 
         await query.message.edit(text=Txt.HELP_MSG, reply_markup=InlineKeyboardMarkup(btn), disable_web_page_preview=True)
 
     if data == 'home':
         btn = [
-            [InlineKeyboardButton(text='❗ Hᴇʟᴘ', callback_data='help'), InlineKeyboardButton(
-                text='🌨️ Aʙᴏᴜᴛ', callback_data='about')],
-            [InlineKeyboardButton(text='📢 Uᴘᴅᴀᴛᴇs', url='https://t.me/AIORFT'), InlineKeyboardButton
-                (text='💻 Dᴇᴠᴇʟᴏᴘᴇʀ', url='https://t.me/Snowball_Official')]
+            [InlineKeyboardButton(text='❗ Help', callback_data='help'), InlineKeyboardButton(
+                text='🌨️ About', callback_data='about')],
+            [InlineKeyboardButton(text='📢 Updates', url='https://t.me/KingBjss'), InlineKeyboardButton
+                (text='💻 Support', url='https://t.me/KingBjssChat')]
         ]
         await query.message.edit(text=Txt.PRIVATE_START_MSG.format(query.from_user.mention), reply_markup=InlineKeyboardMarkup(btn))
 
     elif data == 'about':
         BUTN = [
-            [InlineKeyboardButton(text='⟸ Bᴀᴄᴋ', callback_data='home')]
+            [InlineKeyboardButton(text='⟸ Back', callback_data='home')]
         ]
         botuser = await bot.get_me()
         await query.message.edit(Txt.ABOUT_TXT.format(botuser.username), reply_markup=InlineKeyboardMarkup(BUTN), disable_web_page_preview=True)
@@ -62,9 +62,9 @@ async def Cb_Handle(bot: Client, query: CallbackQuery):
         file = getattr(query.message.reply_to_message,
                        query.message.reply_to_message.media.value)
 
-        text = f"""**__What do you want me to do with this file.?__**\n\n**File Name** :- `{file.file_name}`\n\n**File Size** :- `{humanize.naturalsize(file.file_size)}`"""
-        buttons = [[InlineKeyboardButton("Rᴇɴᴀᴍᴇ 📝", callback_data=f"rename-{query.from_user.id}")],
-                   [InlineKeyboardButton("Cᴏᴍᴘʀᴇss 🗜️", callback_data=f"compress-{query.from_user.id}")]]
+        text = f"""**__What Do You Want Me To Do With This File.?__**\n\n**File Name** :- `{file.file_name}`\n\n**File Size** :- `{humanize.naturalsize(file.file_size)}`"""
+        buttons = [[InlineKeyboardButton("Rename 📝", callback_data=f"rename-{query.from_user.id}")],
+                   [InlineKeyboardButton("Compress 🗜️", callback_data=f"compress-{query.from_user.id}")]]
 
         await query.message.edit(text=text, reply_markup=InlineKeyboardMarkup(buttons))
 
@@ -72,29 +72,29 @@ async def Cb_Handle(bot: Client, query: CallbackQuery):
         try:
             ffmpeg_code = await bot.ask(text=Txt.SEND_FFMPEG_CODE, chat_id=query.from_user.id, filters=filters.text, timeout=60, disable_web_page_preview=True)
         except:
-            return await query.message.reply_text("**Eʀʀᴏʀ!!**\n\nRᴇǫᴜᴇsᴛ ᴛɪᴍᴇᴅ ᴏᴜᴛ.\nSᴇᴛ ʙʏ ᴜsɪɴɢ /set_ffmpeg")
+            return await query.message.reply_text("**Error!!**\n\nRequest Timed Out.\nSet By Using /set_ffmpeg")
 
-        SnowDev = await query.message.reply_text(text="**Setting Your FFMPEG CODE**\n\nPlease Wait...")
+        SnowDev = await query.message.reply_text(text="**Setting Your Ffmpeg Code**\n\nPlease Wait...")
         await db.set_ffmpegcode(query.from_user.id, ffmpeg_code.text)
-        await SnowDev.edit("✅️ __**Fғᴍᴘᴇɢ Cᴏᴅᴇ Sᴇᴛ Sᴜᴄᴄᴇssғᴜʟʟʏ**__")
+        await SnowDev.edit("✅️ __**Ffmpeg Code Set Successfully**__")
 
 
     elif data.startswith('compress'):
         user_id = data.split('-')[1]
 
         if int(user_id) not in [query.from_user.id, 0]:
-            return await query.answer(f"⚠️ Hᴇʏ {query.from_user.first_name}\nTʜɪs ɪs ɴᴏᴛ ʏᴏᴜʀ ғɪʟᴇ ʏᴏᴜ ᴄᴀɴ'ᴛ ᴅᴏ ᴀɴʏ ᴏᴘᴇʀᴀᴛɪᴏɴ", show_alert=True)
+            return await query.answer(f"⚠️ Hey {query.from_user.first_name}\nThis Is Not Your File You Can't Do Any Operation", show_alert=True)
 
         else:
 
             BTNS = [
-                [InlineKeyboardButton(text='480ᴘ', callback_data='480pc'), InlineKeyboardButton(
-                    text='720ᴘ', callback_data='720pc')],
-                [InlineKeyboardButton(text='1080ᴘ', callback_data='1080pc'), InlineKeyboardButton(
-                    text='4ᴋ', callback_data='2160pc')],
+                [InlineKeyboardButton(text='480p', callback_data='480pc'), InlineKeyboardButton(
+                    text='720p', callback_data='720pc')],
+                [InlineKeyboardButton(text='1080p', callback_data='1080pc'), InlineKeyboardButton(
+                    text='4k', callback_data='2160pc')],
                 [InlineKeyboardButton(
-                    text='Cᴜsᴛᴏᴍ Eɴᴄᴏᴅɪɴɢ 🗜️', callback_data='custompc')],
-                [InlineKeyboardButton(text='✘ Cʟᴏꜱᴇ', callback_data='close'), InlineKeyboardButton(
+                    text='Custom Encoding 🗜️', callback_data='custompc')],
+                [InlineKeyboardButton(text='✘ Close', callback_data='close'), InlineKeyboardButton(
                     text='⟸ Bᴀᴄᴋ', callback_data='option')]
             ]
             await query.message.edit(text='**Select the Compression Method Below 👇 **', reply_markup=InlineKeyboardMarkup(BTNS))
@@ -149,9 +149,9 @@ async def Cb_Handle(bot: Client, query: CallbackQuery):
             else:
                 BUTT = [
                     [InlineKeyboardButton(
-                        text='Sᴇᴛ Fғᴍᴘᴇɢ Cᴏᴅᴇ', callback_data='setffmpeg')],
+                        text='Set Ffmpeg Code', callback_data='setffmpeg')],
                     [InlineKeyboardButton(
-                        text='⟸ Bᴀᴄᴋ', callback_data=f'compress-{query.from_user.id}')]
+                        text='⟸ Back', callback_data=f'compress-{query.from_user.id}')]
                 ]
                 await query.message.edit(text="You Don't Have Any Custom FFMPEG Code. 🛃", reply_markup=InlineKeyboardMarkup(BUTT))
         except Exception as e:
@@ -162,7 +162,7 @@ async def Cb_Handle(bot: Client, query: CallbackQuery):
         user_id = data.split('-')[1]
         
         if int(user_id) not in [query.from_user.id, 0]:
-            return await query.answer(f"⚠️ Hᴇʏ {query.from_user.first_name}\nTʜɪs ɪs ɴᴏᴛ ʏᴏᴜʀ ғɪʟᴇ ʏᴏᴜ ᴄᴀɴ'ᴛ ᴅᴏ ᴀɴʏ ᴏᴘᴇʀᴀᴛɪᴏɴ", show_alert=True)
+            return await query.answer(f"⚠️ Hey {query.from_user.first_name}\nThis Is Not Your File You Can't Do Any Operation", show_alert=True)
         
         try:
             await query.message.delete()
@@ -171,3 +171,4 @@ async def Cb_Handle(bot: Client, query: CallbackQuery):
         except:
             await query.message.delete()
             await query.message.continue_propagation()
+            
