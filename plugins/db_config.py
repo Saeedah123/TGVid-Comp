@@ -13,12 +13,12 @@ async def add_caption(client, message):
         return
 
     if len(message.command) == 1:
-        return await message.reply_text("**__Gɪᴠᴇ Tʜᴇ Cᴀᴩᴛɪᴏɴ__\n\nExᴀᴍᴩʟᴇ:- `/set_caption {filename}\n\n💾 Sɪᴢᴇ: {filesize}\n\n⏰ Dᴜʀᴀᴛɪᴏɴ: {duration}`**")
+        return await message.reply_text("**__Give The Caption__\n\nExample:- `/set_caption {filename}\n\n💾 Size: {filesize}\n\n⏰ Duration: {duration}`**")
 
     SnowDev = await message.reply_text(text="**Please Wait...**", reply_to_message_id=message.id)
     caption = message.text.split(" ", 1)[1]
     await db.set_caption(message.from_user.id, caption=caption)
-    await message.reply_text("__**✅ Cᴀᴩᴛɪᴏɴ Sᴀᴠᴇᴅ**__")
+    await message.reply_text("__**✅ Caption Saved**__")
 
 
 @Client.on_message((filters.group | filters.private) & filters.command('del_caption'))
@@ -32,9 +32,9 @@ async def delete_caption(client, message):
     SnowDev = await message.reply_text(text="**Please Wait...**", reply_to_message_id=message.id)
     caption = await db.get_caption(message.from_user.id)
     if not caption:
-        return await SnowDev.edit("__**😔 Yᴏᴜ Dᴏɴ'ᴛ Hᴀᴠᴇ Aɴy Cᴀᴩᴛɪᴏɴ**__")
+        return await SnowDev.edit("__**😔 You Don't Have Any Caption**__")
     await db.set_caption(message.from_user.id, caption=None)
-    await SnowDev.edit("__**❌️ Cᴀᴩᴛɪᴏɴ Dᴇʟᴇᴛᴇᴅ**__")
+    await SnowDev.edit("__**❌️ Caption Deleted**__")
 
 
 @Client.on_message((filters.group | filters.private) & filters.command(['see_caption', 'view_caption']))
@@ -46,9 +46,9 @@ async def see_caption(client, message):
 
     caption = await db.get_caption(message.from_user.id)
     if caption:
-        await message.reply_text(f"**Yᴏᴜ'ʀᴇ Cᴀᴩᴛɪᴏɴ:-**\n\n`{caption}`")
+        await message.reply_text(f"**You're Caption:-**\n\n`{caption}`")
     else:
-        await message.reply_text("__**😔 Yᴏᴜ Dᴏɴ'ᴛ Hᴀᴠᴇ Aɴy Cᴀᴩᴛɪᴏɴ**__")
+        await message.reply_text("__**😔 You Don't Have Any Caption**__")
 
 
 @Client.on_message((filters.group | filters.private) & filters.command(['view_thumb', 'viewthumb']))
@@ -64,7 +64,7 @@ async def viewthumb(client, message):
         await SnowDev.delete()
         await client.send_photo(chat_id=message.chat.id, photo=thumb, reply_to_message_id=message.id)
     else:
-        await SnowDev.edit("😔 __**Yᴏᴜ Dᴏɴ'ᴛ Hᴀᴠᴇ Aɴy Tʜᴜᴍʙɴᴀɪʟ**__")
+        await SnowDev.edit("😔 __**You Don't Have Any Thumbnail**__")
 
 
 @Client.on_message((filters.group | filters.private) & filters.command(['del_thumb', 'delthumb']))
@@ -76,7 +76,7 @@ async def removethumb(client, message):
 
     SnowDev = await message.reply_text(text="**Please Wait...**", reply_to_message_id=message.id)
     await db.set_thumbnail(message.from_user.id, thumbnail=None)
-    await SnowDev.edit("❌️ __**Tʜᴜᴍʙɴᴀɪʟ Dᴇʟᴇᴛᴇᴅ**__")
+    await SnowDev.edit("❌️ __**Thumbnail Deleted**__")
 
 
 @Client.on_message((filters.group | filters.private) & filters.photo)
@@ -87,7 +87,7 @@ async def addthumbs(client, message):
 
     SnowDev = await message.reply_text(text="**Please Wait...**", reply_to_message_id=message.id)
     await db.set_thumbnail(message.from_user.id, message.photo.file_id)
-    await SnowDev.edit("✅️ __**Tʜᴜᴍʙɴᴀɪʟ Sᴀᴠᴇᴅ**__")
+    await SnowDev.edit("✅️ __**Thumbnail Saved**__")
     
 
 @Client.on_message((filters.group | filters.private) & filters.command(['set_ffmpeg', 'setffmpeg']))
@@ -100,11 +100,11 @@ async def set_ffmpeg(client, message):
         ffmpeg = await client.ask(text=Txt.SEND_FFMPEG_CODE, chat_id=message.chat.id,
                             user_id=message.from_user.id, filters=filters.text, timeout=30, disable_web_page_preview=True)
     except TimeoutError:
-        await message.reply_text("Error!!\n\nRequest timed out.\nRestart by using /set_ffmpeg", reply_to_message_id=message.id)
+        await message.reply_text("Error!!\n\nRequest Timed Out.\nRestart By Using /set_ffmpeg", reply_to_message_id=message.id)
         return
         
     await db.set_ffmpegcode(message.from_user.id, ffmpeg.text)
-    await message.reply_text("✅ __**Fғᴍᴘᴇɢ Cᴏᴅᴇ Sᴀᴠᴇᴅ**__", reply_to_message_id=message.id)
+    await message.reply_text("✅ __**Ffmpeg Code Saved**__", reply_to_message_id=message.id)
 
 
 @Client.on_message((filters.group | filters.private) & filters.command(['see_ffmpeg', 'seeffmpeg']))
@@ -119,9 +119,9 @@ async def see_ffmpeg(client, message):
     ffmpeg = await db.get_ffmpegcode(message.from_user.id)
     
     if ffmpeg:
-        await SnowDev.edit(f"✅ <b>Yᴏᴜʀ Cᴜʀʀᴇɴᴛ Fғᴍᴘᴇɢ Cᴏᴅᴇ ɪs :-</b>\n\n<code>{ffmpeg}</code>")
+        await SnowDev.edit(f"✅ <b>Your Current Ffmpeg Code Is :-</b>\n\n<code>{ffmpeg}</code>")
     else:
-        await SnowDev.edit(f"😔 __**Yᴏᴜ Dᴏɴ'ᴛ Hᴀᴠᴇ Aɴy Fғᴍᴘᴇɢ Cᴏᴅᴇ**__")
+        await SnowDev.edit(f"😔 __**You Don't Have Any Ffmpeg Code**__")
 
 
 @Client.on_message((filters.group | filters.private) & filters.command(['del_ffmpeg', 'delffmpeg']))
@@ -133,7 +133,7 @@ async def del_ffmpeg(client, message):
 
     SnowDev = await message.reply_text(text="**Please Wait...**", reply_to_message_id=message.id)
     await db.set_ffmpegcode(message.from_user.id, None)
-    await SnowDev.edit("❌ __**Fғᴍᴘᴇɢ Cᴏᴅᴇ Dᴇʟᴇᴛᴇᴅ**__")
+    await SnowDev.edit("❌ __**Ffmpeg Code Deleted**__")
 
 
 @Client.on_message((filters.group | filters.private) & filters.command('set_metadata'))
@@ -147,11 +147,11 @@ async def set_metadata(client, message):
         metadata = await client.ask(text=Txt.SEND_METADATA, chat_id=message.chat.id, user_id=message.from_user.id, filters=filters.text, timeout=30)
 
     except TimeoutError:
-        await message.reply_text("Error!!\n\nRequest timed out.\nRestart by using /set_ffmpeg", reply_to_message_id= metadata.id)
+        await message.reply_text("Error!!\n\nRequest Timed Out.\nRestart By Using /set_ffmpeg", reply_to_message_id= metadata.id)
         return
     
     await db.set_metadata(message.from_user.id, metadata=metadata.text)
-    await message.reply_text("✅ __**Mᴇᴛᴀᴅᴀᴛᴀ Cᴏᴅᴇ Sᴀᴠᴇᴅ**__", reply_to_message_id=message.id)
+    await message.reply_text("✅ __**Metadata Code Saved**__", reply_to_message_id=message.id)
     
     
 @Client.on_message((filters.group | filters.private) & filters.command('see_metadata'))
@@ -165,6 +165,7 @@ async def see_metadata(client, message):
     metadata = await db.get_metadata(message.from_user.id)
     
     if metadata:
-        await SnowDev.edit(f"✅ <b>Yᴏᴜʀ Cᴜʀʀᴇɴᴛ Mᴇᴛᴀᴅᴀᴛᴀ Cᴏᴅᴇ ɪs :-</b>\n\n<code>{metadata}</code>")
+        await SnowDev.edit(f"✅ <b>Your Current Metadata Code Is :-</b>\n\n<code>{metadata}</code>")
     else:
-        await SnowDev.edit(f"😔 __**Yᴏᴜ Dᴏɴ'ᴛ Hᴀᴠᴇ Aɴy Mᴇᴛᴀᴅᴀᴛᴀ Cᴏᴅᴇ**__")
+        await SnowDev.edit(f"😔 __**You Don't Have Any Metadata Code**__")
+        
